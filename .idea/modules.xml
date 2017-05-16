@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/realtimesystems.iml" filepath="$PROJECT_DIR$/.idea/modules/realtimesystems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/realtimesystems_main.iml" filepath="$PROJECT_DIR$/.idea/modules/realtimesystems_main.iml" group="realtimesystems" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/realtimesystems_test.iml" filepath="$PROJECT_DIR$/.idea/modules/realtimesystems_test.iml" group="realtimesystems" />
+    </modules>
+  </component>
+</project>
