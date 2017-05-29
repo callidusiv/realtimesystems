@@ -9,7 +9,7 @@ public class MainFrame {
 
   public MainFrame() {
     frame = new JFrame("Real Time Systems");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
   }
 

@@ -1,5 +1,7 @@
 package ua.com.proximus.realtimesystems.calculations;
 
+import ua.com.proximus.realtimesystems.measurements.TimeMeasure;
+
 public class Calculations {
   /**
    * Calculate Po for n, lambda and nu parameters
@@ -10,16 +12,27 @@ public class Calculations {
    */
   public static double calcPo(int n, double lambda, double nu) {
     // Calculate Po fo n, lambda and nu parameters
+    TimeMeasure counter = TimeMeasure.getInstance();
+    // First block
+    counter.start();
     double ro = lambda * nu;
     int nCurrent = n;
     long nMultiply = 1;
     double denominator = 1.0;
+    counter.save(1);
     for (int k = 0; k < n; k++) {
+      // Second block
+      counter.start();
       nMultiply *= nCurrent;
       denominator += nMultiply * Math.pow(ro, k + 1);
       nCurrent -= 1;
+      counter.save(2);
     }
-    return 1.0 / denominator;
+    // Third block
+    counter.start();
+    double po = 1.0 / denominator;
+    counter.save(3);
+    return po;
   }
 
   /**

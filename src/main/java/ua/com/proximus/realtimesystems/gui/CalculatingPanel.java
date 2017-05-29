@@ -1,6 +1,7 @@
 package ua.com.proximus.realtimesystems.gui;
 
 import ua.com.proximus.realtimesystems.calculations.Calculations;
+import ua.com.proximus.realtimesystems.measurements.TimeMeasure;
 
 import javax.swing.*;
 import javax.swing.event.CellEditorListener;
@@ -15,6 +16,7 @@ import java.util.EventObject;
 
 public class CalculatingPanel extends JPanel {
   private PrioritiesTableModel model;
+  private CounterPanel counterPanel = new CounterPanel(3);
 
   public CalculatingPanel(int countOfPriorities) {
     model = new PrioritiesTableModel(countOfPriorities);
@@ -37,6 +39,12 @@ public class CalculatingPanel extends JPanel {
           tp[i] = Calculations.calcTp(model.getCountOfTasks()[i], model.getLambda()[i], realNu[i]);
         }
         model.setTp(tp);
+
+        for (int index = 1; index <= 3; index++) {
+          counterPanel.setText(index - 1, String.format("steps = %d, avg time = %.2f", TimeMeasure.getInstance().getCount(index), TimeMeasure.getInstance().getAverage(index)));
+          System.out.println("Times of " + index + " block: " + TimeMeasure.getInstance().getMeasurements(index));
+        }
+        TimeMeasure.getInstance().clear();
       }
     });
 
@@ -55,5 +63,6 @@ public class CalculatingPanel extends JPanel {
     setLayout(new BorderLayout());
     add(topPanel, BorderLayout.NORTH);
     add(new JScrollPane(table), BorderLayout.CENTER);
+    add(counterPanel, BorderLayout.SOUTH);
   }
 }
